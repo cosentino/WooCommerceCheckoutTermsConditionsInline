@@ -1,8 +1,7 @@
 <?php
 /*
 Plugin Name: Woocommerce Checkout Terms Conditions Inline
-Plugin URI: http://dualcube.com
-Description: This is a woocommerce plugin which show the terms and conditions inline in checkout page, Here admin can change the text of Terms and conditions as well as link text. admin can also configure the size of popup and text of popup button. Popup will be fully responsive in any device.
+Description: WooCommerce plugin that shows the terms and conditions text right above the acceptance checkbox.
 Author: Marcello Cosentino
 Version: 1.0.0
 */
@@ -20,6 +19,18 @@ if(! WC_Dependencies_terms_conditions::woocommerce_active_check()) {
   add_action( 'admin_notices', 'woocommerce_terms_conditions_alert_notice' );
 }
 else {
+
+	/**
+	 * Plugin page links
+	 */
+	function checkout_terms_conditions_inline_plugin_links( $links ) {
+		$plugin_links = array(
+			'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=conditions_inline_settings_tab' ) . '">' . __( 'Settings', GU_CHECKOUT_TERMS_CONDITIONS_INLINE_TEXT_DOMAIN ) . '</a>',
+		);
+		return array_merge( $plugin_links, $links );
+	}
+	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'checkout_terms_conditions_inline_plugin_links' );
+
 	if(!class_exists('GU_Checkout_Terms_Conditions_Inline')) {
 		require_once( trailingslashit(dirname(__FILE__)).'classes/class-gu-checkout-terms-conditions-inline.php' );
 		global $GU_Checkout_Terms_Conditions_Inline;

@@ -8,7 +8,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Credits: inspired by the WooCommerce Checkout Terms Conditions Popup by DualCube.
 
-This plugin shows the terms and conditions inline, right above the acceptance checkbox.
+WooCommerce plugin that shows the terms and conditions text right above the acceptance checkbox.
 
 == Description ==
 WooCommerce Checkout Terms Conditions Inline shows the terms and conditions inline, right above the acceptance checkbox,

@@ -12,6 +12,7 @@ class GU_Checkout_Terms_Conditions_Inline_Settings {
     // Admin menu
 
     //add_action( 'admin_init', array( $this, 'settings_page_init' ) );
+  	add_filter( 'woocommerce_settings_tabs_array', array($this, 'add_conditions_inline_settings_tab' ),50 );
     add_action( 'woocommerce_settings_tabs_conditions_inline_settings_tab', array($this, 'terms_settings_tab') );
     add_action( 'woocommerce_update_options_conditions_inline_settings_tab', array($this,'update_settings') );
     
@@ -19,8 +20,7 @@ class GU_Checkout_Terms_Conditions_Inline_Settings {
     //add_action('settings_page_dc_checkout_terms_conditions_inline_general_tab_init', array(&$this, 'general_tab_init'), 10, 1);
     
   }
-
-
+	
   /**
    *Add woocommerce Setting tabs.
    *
